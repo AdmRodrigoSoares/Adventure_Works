@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: erp
     description: Banco réplica do erp da northwind.
-    schema: Adventure_Works
+    schema: desafiodw
     tables:
       - name: Address
         description: Endereços.

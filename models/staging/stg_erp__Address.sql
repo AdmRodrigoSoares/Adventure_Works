@@ -1,20 +1,20 @@
 with
     source_Address as (
         select
-            addressid                
-            , stateprovinceid
-          - , city
-          - , addressline2
-          - , modifieddate
-          - , rowguid
-          - , _sdc_table_version
-          - , postalcode
-          - , spatiallocation
-          - , _sdc_received_at
-          - , _sdc_sequence
-          - , addressline1
-          - , _sdc_batched_at           
-            , cast(description as string) as descricao_categoria        
+            cast(addressid as int) as id_endereco
+            , cast(stateprovinceid as int) as id_estado
+            , cast(city as string) as cidade
+            , cast(addressline1 as string) as endereco
+            , cast(addressline2 as string) as endereco_complemento
+            , cast(modifieddate as timestamp) as data_de_modificacao
+            , cast(postalcode as string) as codigo_postal
+            --, rowguid
+            --, _sdc_table_version
+            --, spatiallocation
+            --, _sdc_received_at
+            --, _sdc_sequence
+            --, _sdc_batched_at
+            
         from {{ source('erp', 'Address') }}
     )
 
