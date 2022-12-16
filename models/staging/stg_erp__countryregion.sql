@@ -1,7 +1,7 @@
 with
     source_countryregion  as (
         select
-            cast(countryregioncode as int) as id_pais
+            cast(countryregioncode as string) as id_pais
             , cast(name as string) as nome_pais              
             , cast(modifieddate as timestamp) as data_de_modificacao_pais
             --, _sdc_sequence

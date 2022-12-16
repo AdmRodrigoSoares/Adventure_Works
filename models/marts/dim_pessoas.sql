@@ -4,69 +4,70 @@ with
         from {{ref('stg_erp__person') }} 
     )
 
-    ,businessentityaddress as (
+    ,pessoaendereco as (
         select *
         from {{ref('stg_erp__ businessentityaddress')}}
     )
 
-    ,address as (
+    ,endereco as (
         select *
         from {{ref('stg_erp__address')}}
     )
 
-    ,stateprovince{{ ref('stg_erp__stateprovince')}}
+    ,estado as (
+        select *
+        from {{ref('stg_erp__stateprovince')}}
     )
 
-    ,countryregion as (
+    , pais as (
         select *
         from{{ref('stg_erp__countryregion')}}
     )
 
-    ,personcreditcard as (
+    ,pessoacartaocredito as (
         select *
         from{{ref('stg_erp__ personcreditcard')}}
     )
 
-    ,creditcard as (
+    ,cartaocredito as (
         select *
         from{{ref('stg_erp__creditcard')}}
     )
 
     , joined as (
         select
-            businessentityid
-            , id_endereco as fk_endereco
-            , id_estado as fk_estado
-            , id_pais as fk_pais
-            , id_cartao_de_credito as fk_cartao_de_credito
-            , estado
-            , sigla_estado
-            , sigla_pais
-            , nome_pais              
-            , data_de_modificacao_pessoa
-            , data_de_modificacao_cartao_de_credito
-            , data_de_modificacao_endereco
-            , data_de_modificacao_pais
-            , data_de_modificacao_estado
-            , tipo_do_cartao             
-        from person.person p
-        left join person.businessentityaddress b
-        on p.businessentityid = b.businessentityid
-        left join person.address a
-        on b.addressid = a.addressid 
-        left join person.stateprovince sp
-        on a.stateprovinceid = sp.stateprovinceid 
-        left join person.countryregion cr
-        on sp.countryregioncode = cr.countryregioncode 
-        left join sales.personcreditcard pc
-        on p.businessentityid = pc.businessentityid 
-        left join sales.creditcard c
-        on pc.creditcardid = c.creditcardid
+            p.id_pessoa
+            , e.id_endereco as fk_endereco
+            , es.id_estado as fk_estado
+            , pa.id_pais as fk_pais
+            , c.id_cartao_de_credito as fk_cartao_de_credito
+            , es.nome_do_estado
+            , es.sigla_estado
+            , pa.nome_pais              
+            , p.data_de_modificacao_pessoa
+            , pc.data_de_modificacao_cartao_de_credito
+            , e.data_de_modificacao_endereco
+            , pa.data_de_modificacao_pais
+            , es.data_de_modificacao_estado
+            , c.tipo_do_cartao             
+        from pessoas p
+        left join pessoaendereco pe
+        on p.id_pessoa = pe.id_pessoa
+        left join endereco e
+        on pe.id_endereco = e.id_endereco
+        left join estado es
+        on e.id_estado = es.id_estado 
+        left join pais pa
+        on  pa.id_pais = es.id_pais
+        left join pessoacartaocredito pc
+        on p.id_pessoa = pc.id_pessoa
+        left join cartaocredito c
+        on pc.id_cartao_de_credito = c.id_cartao_de_credito
     )
 
     , transformed as (
         select
-            {{ dbt_utils.surrogate_key(['businessentityid', 'addressid']) }} as sk_pessoas
+            row_number() over (order by id_pessoa) as sk_pessoas
             , *
             from joined        
     )
