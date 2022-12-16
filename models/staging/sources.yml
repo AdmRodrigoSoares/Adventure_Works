@@ -5,7 +5,7 @@ sources:
     description: Banco réplica do erp da northwind.
     schema: desafiodw
     tables:
-      - name: Address
+      - name: address
         description: Endereços.
         columns:
           - name: addressid
@@ -13,28 +13,87 @@ sources:
             tests:
               - unique
               - not_null
-          - name: stateprovinceid
-          - name: city
-            description: Cidade.
-          - name: addressline2
-          - name: modifieddate
-          - name: rowguid
-          - name: _sdc_table_version
-          - name: postalcode
-          - name: spatiallocation
-          - name: _sdc_received_at
-          - name: _sdc_sequence
-          - name: addressline1
-          - name: _sdc_batched_at            
-      - name: businessentityaddress 
+      - name: businessentityaddress
+        columns:
+          - name: businessentityid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null      
       - name: countryregion
+        columns:
+          - name: countryregioncode
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null       
       - name: creditcard
+        columns:
+          - name: creditcardid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null      
       - name: person
+        columns:
+          - name: businessentityid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null      
       - name: personcreditcard
+        columns:
+          - name: businessentityid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null        
       - name: product
+        columns:
+          - name: productid     
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null       
       - name: salesorderdetail
+        columns:
+          - name: salesorderdetailid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null
       - name: salesorderheader
+        columns:
+          - name: salesorderid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null
       - name: salesorderheadersalesreason
+        columns:
+          - name: salesreasonid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null
       - name: salesreason
+        columns:
+          - name: salesreasonid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null
       - name: salesterritory
+        columns:
+          - name: territoryid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null
       - name: stateprovince
+        columns:
+          - name: stateprovinceid
+            description: Chave primária.
+            tests:
+              - unique
+              - not_null

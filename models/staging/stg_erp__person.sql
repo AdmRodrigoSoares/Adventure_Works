@@ -5,7 +5,7 @@ with
             , cast(firstname as string) as primeiro_nome
             , cast(middlename as string) as primeiro_sobrenome
             , cast(lastname as string) as segundo_sobrenome
-            , cast(modifieddate as timestamp) as data_de_modificacao
+            , cast(modifieddate as timestamp) as data_de_modificacao_pessoa
             --, persontype
             --, namestyle
             --, suffix
