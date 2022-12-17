@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: int_vendas
+    description: Dimensão com informação de vendas intermediaria.
+    columns:
+      - name: id_detalhe_de_venda
+        description: E a primary key da tabela intermediaria de vendas.
+        tests:
+          - unique
+          - not_null      
+      - name: pedidos_detalhes.id_produto
+        tests:
+          - unique
+          - not_null      
+      - name: pedidos.id_venda
+        tests:
+          - unique
+          - not_null   
+      - name: pedidos.id_cartao_de_credito
+        tests:
+          - unique
+          - not_null   
+      - name: pedidos.id_consumidor
+        tests:
+          - unique
+          - not_null   
+      - name: pedidos_razao.id_razao_venda
+        tests:
+          - unique
+          - not_null   
+      - name: pedidos_detalhes.preco_unitario
+      - name: pedidos_detalhes.desconto
+      - name: pedidos_detalhes.quantidade
+      - name: pedidos.data_da_venda
+      - name: pedidos.frete
+      - name: pedidos.data_vencimento
+      - name: pedidos.total
+      - name: pedidos.subtotal
+      - name: razao.razao_da_venda
+      - name: razao.tipo_razao_da_venda

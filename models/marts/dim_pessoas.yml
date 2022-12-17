@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_pessoas
+    description: Dimensão com informação de pessoas.
+    columns:
+      - name: sk_pessoas
+        description: É a primary key da dimensão de pessoas.
+        tests:
+          - unique
+          - not_null
+      - name: id_pessoa
+        tests:
+          - unique
+          - not_null
+      - name: id_endereco as fk_endereco
+        tests:
+          - unique
+          - not_null
+      - name: id_estado as fk_estado
+        tests:
+          - unique
+          - not_null
+      - name: id_pais as fk_pais
+        tests:
+          - unique
+          - not_null
+      - name: id_cartao_de_credito as fk_cartao_de_credito
+        tests:
+          - unique
+          - not_null      
+      - name: nome_do_estado
+      - name: sigla_estado
+      - name: nome_pais              
+      - name: data_de_modificacao_pessoa
+      - name: data_de_modificacao_cartao_de_credito
+      - name: data_de_modificacao_endereco
+      - name: data_de_modificacao_pais
+      - name: data_de_modificacao_estado
+      - name: tipo_do_cartao 
