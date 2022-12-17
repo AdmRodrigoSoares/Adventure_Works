@@ -40,26 +40,26 @@ with
 
     , joined as (
         select
-            pd.id_detalhe_de_venda
-            , pd.id_produto
-            , pd.preco_unitario
-            , pd.desconto
-            , pd.quantidade
-            , p.id_venda
-            , p.id_cartao_de_credito
-            , p.id_consumidor
-            , p.data_da_venda
-            , p.frete
-            , p.data_vencimento
-            , p.total
-            , p.subtotal
-            , pr.id_razao_venda
-            , r.razao_da_venda
-            , r.tipo_razao_da_venda
-        from pedidos p
-        left join pedidos_detalhes pd on p.id_venda = pd.id_venda
-        left join pedidos_razao pr on p.id_venda = pr.id_razao_venda
-        left join razao r on pr.id_razao_venda = r.id_razao_venda
+            id_detalhe_de_venda
+            , pedidos_detalhes.id_produto
+            , pedidos_detalhes.preco_unitario
+            , pedidos_detalhes.desconto
+            , pedidos_detalhes.quantidade
+            , pedidos.id_venda
+            , pedidos.id_cartao_de_credito
+            , pedidos.id_consumidor
+            , pedidos.data_da_venda
+            , pedidos.frete
+            , pedidos.data_vencimento
+            , pedidos.total
+            , pedidos.subtotal
+            , pedidos_razao.id_razao_venda
+            , razao.razao_da_venda
+            , razao.tipo_razao_da_venda
+        from pedidos
+        left join pedidos_detalhes on pedidos.id_venda = pedidos_detalhes.id_venda
+        left join pedidos_razao on pedidos.id_venda = pedidos_razao.id_razao_venda
+        left join razao on pedidos_razao.id_razao_venda = razao.id_razao_venda
     )
 
 select * 

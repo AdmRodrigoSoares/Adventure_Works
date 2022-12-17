@@ -36,33 +36,33 @@ with
 
     , joined as (
         select
-            p.id_pessoa
-            , e.id_endereco as fk_endereco
-            , es.id_estado as fk_estado
-            , pa.id_pais as fk_pais
-            , c.id_cartao_de_credito as fk_cartao_de_credito
-            , es.nome_do_estado
-            , es.sigla_estado
-            , pa.nome_pais              
-            , p.data_de_modificacao_pessoa
-            , pc.data_de_modificacao_cartao_de_credito
-            , e.data_de_modificacao_endereco
-            , pa.data_de_modificacao_pais
-            , es.data_de_modificacao_estado
-            , c.tipo_do_cartao             
-        from pessoas p
-        left join pessoaendereco pe
-        on p.id_pessoa = pe.id_pessoa
-        left join endereco e
-        on pe.id_endereco = e.id_endereco
-        left join estado es
-        on e.id_estado = es.id_estado 
-        left join pais pa
-        on  pa.id_pais = es.id_pais
-        left join pessoacartaocredito pc
-        on p.id_pessoa = pc.id_pessoa
-        left join cartaocredito c
-        on pc.id_cartao_de_credito = c.id_cartao_de_credito
+            pessoas.id_pessoa
+            , endereco.id_endereco as fk_endereco
+            , estado.id_estado as fk_estado
+            , pais.id_pais as fk_pais
+            , cartaocredito.id_cartao_de_credito as fk_cartao_de_credito
+            , estado.nome_do_estado
+            , estado.sigla_estado
+            , estado.data_de_modificacao_estado
+            , pais.nome_pais              
+            , pais.data_de_modificacao_pais
+            , pessoas.data_de_modificacao_pessoa
+            , pessoacartaocredito.data_de_modificacao_cartao_de_credito
+            , endereco.data_de_modificacao_endereco
+            , cartaocredito.tipo_do_cartao             
+        from pessoas
+        left join pessoaendereco
+        on pessoas.id_pessoa = pessoaendereco.id_pessoa
+        left join endereco
+        on pessoaendereco.id_endereco = endereco.id_endereco
+        left join estado
+        on endereco.id_estado = estado.id_estado 
+        left join pais
+        on  pais.id_pais = estado.id_pais
+        left join pessoacartaocredito
+        on pessoas.id_pessoa = pessoacartaocredito.id_pessoa
+        left join cartaocredito
+        on pessoacartaocredito.id_cartao_de_credito = cartaocredito.id_cartao_de_credito
     )
 
     , transformed as (
