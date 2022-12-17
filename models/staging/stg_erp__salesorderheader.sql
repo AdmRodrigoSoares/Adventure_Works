@@ -2,7 +2,7 @@ with
     source_salesorderheader as (
         select
             cast(salesorderid as int) as id_venda
-            , cast(creditcardid as int) as id_catao_de_credito
+            , cast(creditcardid as int) as id_cartao_de_credito
             , cast(customerid as int) as id_consumidor
             , cast(orderdate as timestamp) as data_da_venda
             , cast(freight as numeric) as frete
