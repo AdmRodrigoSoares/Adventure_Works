@@ -40,7 +40,7 @@ with
 
     , joined as (
         select
-            id_detalhe_de_venda
+            pedidos_detalhes.id_detalhe_de_venda
             , pedidos_detalhes.id_produto
             , pedidos_detalhes.preco_unitario
             , pedidos_detalhes.desconto

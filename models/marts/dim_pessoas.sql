@@ -37,10 +37,10 @@ with
     , joined as (
         select
             pessoas.id_pessoa
-            , endereco.id_endereco as fk_endereco
-            , estado.id_estado as fk_estado
-            , pais.id_pais as fk_pais
-            , cartaocredito.id_cartao_de_credito as fk_cartao_de_credito
+            , endereco.id_endereco
+            , estado.id_estado
+            , pais.id_pais
+            , cartaocredito.id_cartao_de_credito
             , estado.nome_do_estado
             , estado.sigla_estado
             , estado.data_de_modificacao_estado
