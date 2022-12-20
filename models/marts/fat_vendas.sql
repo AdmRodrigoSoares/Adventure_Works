@@ -54,7 +54,7 @@ with
             , produtos.preco_de_custo 
         from vendas
         left join pessoas on pessoas.id_cartao_de_credito = vendas.id_cartao_de_credito
-        left join produtos on vendas.id_produto = produtos.sk_produto
+        left join produtos on vendas.id_produto = produtos.id_produto
     )
 
     select *

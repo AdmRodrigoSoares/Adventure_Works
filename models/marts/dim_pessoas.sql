@@ -40,6 +40,7 @@ with
             , endereco.id_endereco
             , estado.id_estado
             , pais.id_pais
+            , cidade
             , cartaocredito.id_cartao_de_credito
             , estado.nome_do_estado
             , estado.sigla_estado
@@ -49,7 +50,7 @@ with
             , pessoas.data_de_modificacao_pessoa
             , pessoacartaocredito.data_de_modificacao_cartao_de_credito
             , endereco.data_de_modificacao_endereco
-            , cartaocredito.tipo_do_cartao             
+            , cartaocredito.tipo_do_cartao
         from pessoas
         left join pessoaendereco
         on pessoas.id_pessoa = pessoaendereco.id_pessoa
