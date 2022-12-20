@@ -58,7 +58,7 @@ with
             , razao.tipo_razao_da_venda
         from pedidos
         left join pedidos_detalhes on pedidos.id_venda = pedidos_detalhes.id_venda
-        left join pedidos_razao on pedidos.id_venda = pedidos_razao.id_razao_venda
+        left join pedidos_razao on pedidos.id_venda = pedidos_razao.id_venda
         left join razao on pedidos_razao.id_razao_venda = razao.id_razao_venda
     )
 
