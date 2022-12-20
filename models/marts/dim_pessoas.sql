@@ -41,6 +41,9 @@ with
             , estado.id_estado
             , pais.id_pais
             , cidade
+            , primeiro_nome
+            , primeiro_sobrenome
+            , segundo_sobrenome
             , cartaocredito.id_cartao_de_credito
             , estado.nome_do_estado
             , estado.sigla_estado
